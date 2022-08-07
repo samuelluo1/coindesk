@@ -6,6 +6,7 @@ import com.example.coin.model.CoinRateVO;
 import com.example.coin.model.coindesk.CurrentPrice;
 import com.example.coin.repository.CoinChineseConversionRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
@@ -26,10 +27,9 @@ public class CoinService {
 
     private final CoinChineseConversionRepository coinChineseConversionRepository;
 
-    private final RestTemplate restTemplate;
+    private final RestTemplate restTemplate = new RestTemplate();
 
-    public CoinService(RestTemplate restTemplate, CoinChineseConversionRepository coinChineseConversionRepository) {
-        this.restTemplate = restTemplate;
+    public CoinService(CoinChineseConversionRepository coinChineseConversionRepository) {
         this.coinChineseConversionRepository = coinChineseConversionRepository;
     }
 
